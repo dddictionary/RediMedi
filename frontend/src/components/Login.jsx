@@ -91,6 +91,7 @@ export default function Login() {
           <a href="#" className="login__rmm-forgot__link">
             Forgot password?
           </a>
+        </form>
         </div>
         <button className="submit" onClick={handleLogin}>Login</button>
         <div className="login__register">
@@ -101,8 +102,6 @@ export default function Login() {
             </a>
           </p>
         </div>
-      </form>
-    </div>
-    </div>
+      </div>
   );
 }
