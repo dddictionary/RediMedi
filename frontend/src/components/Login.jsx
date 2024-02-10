@@ -1,5 +1,7 @@
 import React from "react";
 import { FaUser, FaLock } from "react-icons/fa";
+import "./Login.css";
+
 
 const pingBackend = () => {
   fetch("/auth/facebook");
@@ -47,6 +49,7 @@ export default function Login() {
         </div>
       </form>
       <div id="fb-root"></div>
+      <script async defer crossOrigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0&appId=732440392382696" nonce="oAyole8E"></script>
       <script
         async
         defer

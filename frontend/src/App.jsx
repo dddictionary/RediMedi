@@ -8,10 +8,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" component={Login} />
-        <Route path="/" component={Home} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={< Home />} />
       </Routes>
-      <Navigate to="/login" />
+      {/* <Navigate to="/login" /> */}
     </Router>
   );
 }
