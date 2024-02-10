@@ -47,13 +47,19 @@
     width: 100%;
     height: 100%;
     border-radius: 50px;
+    padding: 0 12px; /* Add padding to the left and right */
 }
 
 .username-text::placeholder,
 .password-text::placeholder {
-    padding-left: 12px;
     color: #767676;
 }
+
+.username-text:focus,
+.password-text:focus {
+    outline: none;
+}
+
 
 .icon {
     position: absolute;

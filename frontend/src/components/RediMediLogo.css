@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.heading {
+  display: flex;
+  justify-content: center;
+}
+
+.heading__header {
+  font-size: 100px;
+}
+
+.heading__header--small {
+    font-size: 40px; /* Adjust font-size for small logo */
+  }
+
+.heading__plus-icon {
+  fill: rgb(213, 0, 0);
+  vertical-align: -0.15em;
+  margin: -1px -5px;
+}
+
