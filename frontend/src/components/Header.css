@@ -4,21 +4,6 @@
   box-sizing: border-box;
 }
 
-.heading {
-  display: flex;
-  justify-content: center;
-}
-
-.heading__header {
-  font-size: 100px;
-}
-
-.heading__plus-icon {
-  fill: rgb(213, 0, 0);
-  vertical-align: -0.15em;
-  margin: -1px -5px;
-}
-
 .subtitle {
   display: flex;
   justify-content: center;
