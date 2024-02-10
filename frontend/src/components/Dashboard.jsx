@@ -99,7 +99,6 @@ export default function Dashboard() {
               required
             />
           </div>
-<<<<<<< HEAD
           <div className="form-group">
             <label htmlFor="">Refill cycle:</label>
             <select name="refill-cycle" id="refill-cycle" className="dropdown">
@@ -115,14 +114,6 @@ export default function Dashboard() {
             </select>
           </div>
           <button type="submit" className="dashboard-submit">
-=======
-          <select name="" id="" className="dropdown">
-            <option value="" className="30days"></option>
-            <option value="" className="60days"></option>
-            <option value="" className="90days"></option>
-          </select>
-          <button type="submit" className="dashboard-submit" onClick={handleMedication}>
->>>>>>> 1505fefe608d504702480120467c6b3448054800
             Submit
           </button>
         </form>
