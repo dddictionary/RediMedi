@@ -14,38 +14,45 @@ export default function Login() {
   const phoneNumberRef = useRef();
   const passwordRef = useRef();
 
-
+  const handleRegistration = () => {
+    console.log("Register");
+  };
 
 
   const handleLogin = async () => {
+    const salt = bcrypt.genSaltSync(10);
     const phoneNumber = phoneNumberRef.current.value;
-    const password = passwordRef.current.value;
-    const hashedPassword = bcrypt.hashSync(password, 10);
-
-
+    const password = bcrypt.hashSync(passwordRef.current.value, salt);
     try {
-      const data = {
-        phoneNumber,
-        hashedPassword,
-      };
+        const data = {
+            phoneNumber,
+            password,
+        };
 
-      const response = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+        const response = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
 
-      const result = await response.json();
-      console.log(result);
-      navigate("/home");
+        const result = await response.json();
+        console.log(result);
 
-      // Optionally, you can update the state or perform other actions based on the response.
+        if (response.status === 200) {
+            // Successful login, redirect to "/home"
+            navigate("/home");
+        } else {
+            // Display an error message to encourage registration
+            alert(result.message);
+            navigate("/register");
+        }
     } catch (error) {
-      console.error("Error sending medication data:", error);
+        console.error("Error sending login data:", error);
     }
-  };
+};
+
 
 
 
@@ -78,7 +85,7 @@ export default function Login() {
               checked={showPassword}
               onChange={handleTogglePassword}
             />
-            <label class="showPassword" htmlFor="showPassword">{" "}Show Password</label>
+            <label className="showPassword" htmlFor="showPassword">{" "}Show Password</label>
           </div>
           <div className="login__forgot">
             <a href="#" className="login__forgot__link">
@@ -96,7 +103,7 @@ export default function Login() {
         <div className="login__register">
           <p className="register-text">
             Don't have an account?{" "}
-            <a href="#" className="register-link">
+            <a onClick={handleRegistration} className="register-link">
               Register here
             </a>
           </p>
