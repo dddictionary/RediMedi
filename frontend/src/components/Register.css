@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body { /* not to be confused with body {}   */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+
+.register {
+    width: 470px;
+    background: pink;
+    padding: 25px;
+    border-radius: 50px;
+}
+
+.form {
+
+}
+
+.register__header {
+    font-size: 40px;
+    margin-top: 3px;
+    text-align: center;
+}
+
+.register__phone-wrapper, 
+.register__password-wrapper {
+    position: relative;
+    margin: 30px 0;
+    width: 100%;
+    height: 50px;   
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+}
+
+.phone-text,
+.password-text {
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    padding: 0 12px; /* Add padding to the left and right */
+}
+
+.phone-text::placeholder,
+.password-text::placeholder {
+    color: #767676;
+}
+
+.phone-text:focus,
+.password-text:focus {
+    outline: none;
+}
+
+
+.icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.register__forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin: -15px 0 15px;
+}
+
+.register__forgot label input {
+    accent-color: #fff;
+    margin-right: 4px;
+}
+
+.showPassword { 
+    accent-color: #fff;
+
+}
+
+.register__forgot__link {
+    padding-top: 5px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.register__forgot__link:hover,
+.register__forgot__link:focus {
+    text-decoration: underline;
+
+}
+
+
+.register__register {
+
+}
+
+.register-text {
+    
+}
+
+.register-link {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.register-link:hover,
+.register-link:focus {
+    text-decoration: underline;
+}
+
+.submit {
+    width: 100%;
+    border-radius: 50px;
+    height: 50px;
+    background: #fff;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    font-size: 16px;
+    color: #333;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.submit:hover {
+    font-weight: bold; 
+    background-color: #f0f0f0; 
+    border-color: #999; 
+    cursor: pointer; 
+}
+
+.fb-register-button {
+    width: 100%;
+    border-radius: 50px;
+
+}
+
