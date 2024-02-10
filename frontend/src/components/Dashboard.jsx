@@ -10,6 +10,32 @@ export default function Dashboard() {
   const [dosage, setDosage] = useState("");
   const [refills, setRefills] = useState("");
 
+  const handleMedication = async () => {
+    try {
+      const data = {
+        medicineName,
+        frequency,
+        dosage,
+        refills,
+      };
+
+      const response = await fetch("http://localhost:3000/medication", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      console.log(result);
+
+      // Optionally, you can update the state or perform other actions based on the response.
+    } catch (error) {
+      console.error("Error sending medication data:", error);
+    }
+  };
+
   // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -74,6 +100,7 @@ export default function Dashboard() {
             <option value="" className="30days"></option>
             <option value="" className="60days"></option>
             <option value="" className="90days"></option>
+<<<<<<< HEAD
           </select>
           <button type="submit" className="dashboard-submit">
             Submit
@@ -84,6 +111,12 @@ export default function Dashboard() {
       <div className="dboard-logo-wrapper">
         <RediMediLogo small/>
       </div>
+=======
+        </select>
+        <button type="submit" className="dashboard-submit" onClick={handleMedication}>Submit</button>
+      </form>
+      <p>For the refill category, input "-1" </p>
+>>>>>>> af12cbc3f8b729143296e50606d736e6101cee04
     </div>
   );
 }
