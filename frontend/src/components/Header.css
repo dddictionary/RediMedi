@@ -4,9 +4,15 @@
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 /* body {
 
 } */
+=======
+body {
+
+}
+>>>>>>> bd7dc33ff26eab24c8fc60fe5cb8c6793159a845
 
 .heading {
     display: flex;
