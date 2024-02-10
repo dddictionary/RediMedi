@@ -1,10 +1,12 @@
 import React from "react";
 import "./Dashboard.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import RediMediLogo from "./RediMediLogo";
 
 export default function Dashboard() {
   // State variables to hold the input values
+  const navigate = useNavigate();
   const [medicineName, setMedicineName] = useState("");
   const [frequency, setFrequency] = useState("");
   const [dosage, setDosage] = useState("");
@@ -29,6 +31,7 @@ export default function Dashboard() {
 
       const result = await response.json();
       console.log(result);
+      navigate("/home");
 
       // Optionally, you can update the state or perform other actions based on the response.
     } catch (error) {
