@@ -4,4 +4,4 @@ Pharmacy web application to help remind people to take their medicine while stuc
 
 ---
 
-Project made by Ali Khachab, Abrar Habib, and Imtiaz Chowdhury.
+Project made by Ali Khachab (frontend focus), Abrar Habib (backend focus), and Imtiaz Chowdhury (assisting both).

@@ -11,7 +11,7 @@ export default function Header() {
       </div>
       <div className="subtitle">
         <small className="subtitle__text">
-            Health alerts.
+            Improving your health, one reminder at a time.
         </small>
       </div>
     </>
