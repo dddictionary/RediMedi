@@ -55,11 +55,11 @@ export default function Login() {
       <div className="login">
         <form className="form" action="">
           <h1 className="login__header">Login</h1>
-          <div className="login__username-wrapper">
+          <div className="login__phone-wrapper">
             <input
-              className="username-text"
+              className="phone-text"
               type="text"
-              placeholder="Username"
+              placeholder="Phone number"
               required
             />
             <FaUser className="icon" />
