@@ -53,7 +53,7 @@ export default function Dashboard() {
   return (
     <div className="dboard-wrapper">
       <div className="dashboard">
-        <h1>Telemedicine Dashboard</h1>
+        <h1>Add a reminder</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="medicineName">Medicine Name:</label>
@@ -95,23 +95,40 @@ export default function Dashboard() {
               id="refills"
               value={refills}
               onChange={(event) => setRefills(event.target.value)}
-              placeholder="Days until next refill"
+              placeholder="Number of refills"
               required
             />
           </div>
+<<<<<<< HEAD
+          <div className="form-group">
+            <label htmlFor="">Refill cycle:</label>
+            <select name="refill-cycle" id="refill-cycle" className="dropdown">
+              <option value="30" className="30days">
+                30 days
+              </option>
+              <option value="60" className="60days">
+                60 days
+              </option>
+              <option value="90" className="90days">
+                90 days
+              </option>
+            </select>
+          </div>
+          <button type="submit" className="dashboard-submit">
+=======
           <select name="" id="" className="dropdown">
             <option value="" className="30days"></option>
             <option value="" className="60days"></option>
             <option value="" className="90days"></option>
           </select>
           <button type="submit" className="dashboard-submit" onClick={handleMedication}>
+>>>>>>> 1505fefe608d504702480120467c6b3448054800
             Submit
           </button>
         </form>
-        <p>For the refill category, input "-1" </p>
       </div>
       <div className="dboard-logo-wrapper">
-        <RediMediLogo small/>
+        <RediMediLogo small />
       </div>
     </div>
   );
