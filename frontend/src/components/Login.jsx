@@ -1,44 +1,50 @@
-import React from "react";
+import { React, useRef } from "react";
 import "./Login.css";
+import bcrypt from "bcryptjs"
 import { FaUser, FaLock } from "react-icons/fa";
-window.fbAsyncInit = function () {
-  FB.init({
-    appId: "732440392382696",
-    cookie: true,
-    xfbml: true,
-    version: '19.0',
-  });
 
-  FB.AppEvents.logPageView();
-};
-
-(function (d, s, id) {
-  var js,
-    fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {
-    return;
-  }
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
-})(document, "script", "facebook-jssdk");
-
-const pingBackend = () => {
-    fetch('/auth/facebook');
-}
-
-// function checkLoginState() {
-//   FB.getLoginStatus(function (response) {
-//     statusChangeCallback(response);
-//   });
-// }
-
-// FB.getLoginStatus(function (response) {
-//   statusChangeCallback(response);
-// });
 
 export default function Login() {
+
+  const phoneNumberRef = useRef();
+  const passwordRef = useRef();
+
+
+
+
+  const handleLogin = async () => {
+    const phoneNumber = phoneNumberRef.current.value;
+    const password = passwordRef.current.value;
+    const hashedPassword = bcrypt.hashSync(password, 10);
+
+
+    try {
+      const data = {
+        phoneNumber,
+        hashedPassword,
+      };
+
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      console.log(result);
+      navigate("/home");
+
+      // Optionally, you can update the state or perform other actions based on the response.
+    } catch (error) {
+      console.error("Error sending medication data:", error);
+    }
+  };
+
+
+
+
   return (
     <div className="body">
         <div className="login">
@@ -70,7 +76,7 @@ export default function Login() {
             Forgot password?
           </a>
         </div>
-        <button class="submit">Login</button>
+        <button className="submit" onClick={handleLogin}>Login</button>
         <div className="login__register">
           <p className="register-text">
             Don't have an account?{" "}
@@ -80,25 +86,6 @@ export default function Login() {
           </p>
         </div>
       </form>
-      <div id="fb-root"></div>
-      <script
-        async
-        defer
-        crossorigin="anonymous"
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0&appId=732440392382696"
-        nonce="oAyole8E"
-      ></script>
-      <div
-        class="fb-login-button"
-        data-width="200px"
-        data-size=""
-        data-button-type=""
-        data-layout=""
-        data-auto-logo
-        ut-link="true"
-        data-use-continue-as="false"
-        onClick={{pingBackend}}
-      ></div>
     </div>
     </div>
     
