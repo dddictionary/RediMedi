@@ -1,7 +1,12 @@
 import React from 'react'
+import Header from "./Header.jsx";
+import Dashboard from "./Dashboard.jsx";
+import "./Home.css";
 
 export default function Home() {
   return (
-    <div>Home</div>
+    <div className="mainpage-body">
+        <Dashboard />
+    </div>
   )
 }
