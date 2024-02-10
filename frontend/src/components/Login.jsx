@@ -3,6 +3,28 @@ import { FaUser, FaLock } from "react-icons/fa";
 import "./Login.css";
 
 
+window.fbAsyncInit = function () {
+  FB.init({
+    appId: '732440392382696',
+    cookie: true,
+    xfbml: true,
+    version: '19.0'
+  });
+
+  FB.AppEvents.logPageView();
+
+};
+
+(function (d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) { return; }
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
 const pingBackend = () => {
   fetch("/auth/facebook");
 };
@@ -50,24 +72,8 @@ export default function Login() {
       </form>
       <div id="fb-root"></div>
       <script async defer crossOrigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0&appId=732440392382696" nonce="oAyole8E"></script>
-      <script
-        async
-        defer
-        crossOrigin="anonymous"
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0&appId=732440392382696"
-        nonce="oAyole8E"
-      ></script>
-      <div
-        className="fb-login-button"
-        data-width="200px"
-        data-size=""
-        data-button-type=""
-        data-layout=""
-        data-auto-logo
-        ut-link="true"
-        data-use-continue-as="false"
-        onClick={pingBackend}
-      ></div>
+      <div className="fb-login-button" data-width="200px" data-size="" data-button-type="" data-layout="" data-auto-logo
+        ut-link="true" data-use-continue-as="false"></div>
     </div>
   );
 }
