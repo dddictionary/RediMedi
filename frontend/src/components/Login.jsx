@@ -1,42 +1,9 @@
 import React from "react";
-import "./Login.css";
 import { FaUser, FaLock } from "react-icons/fa";
-window.fbAsyncInit = function () {
-  FB.init({
-    appId: "732440392382696",
-    cookie: true,
-    xfbml: true,
-    version: "19.0",
-  });
-
-  FB.AppEvents.logPageView();
-};
-
-(function (d, s, id) {
-  var js,
-    fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {
-    return;
-  }
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
-})(document, "script", "facebook-jssdk");
 
 const pingBackend = () => {
-    fetch('/auth/facebook');
-}
-
-// function checkLoginState() {
-//   FB.getLoginStatus(function (response) {
-//     statusChangeCallback(response);
-//   });
-// }
-
-// FB.getLoginStatus(function (response) {
-//   statusChangeCallback(response);
-// });
+  fetch("/auth/facebook");
+};
 
 export default function Login() {
   return (
@@ -69,6 +36,7 @@ export default function Login() {
             Forgot password?
           </a>
         </div>
+        <button className="submit">Login</button>
         <div className="login__register">
           <p className="register-text">
             Don't have an account?{" "}
@@ -82,12 +50,12 @@ export default function Login() {
       <script
         async
         defer
-        crossorigin="anonymous"
+        crossOrigin="anonymous"
         src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0&appId=732440392382696"
         nonce="oAyole8E"
       ></script>
       <div
-        class="fb-login-button"
+        className="fb-login-button"
         data-width="200px"
         data-size=""
         data-button-type=""
@@ -95,7 +63,7 @@ export default function Login() {
         data-auto-logo
         ut-link="true"
         data-use-continue-as="false"
-        onClick={{pingBackend}}
+        onClick={pingBackend}
       ></div>
     </div>
   );
