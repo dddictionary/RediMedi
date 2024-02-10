@@ -39,9 +39,9 @@ export default function Dashboard() {
   // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Medicine Name:", medicineName);
-    console.log("Frequency:", frequency);
-    console.log("Dosage:", dosage);
+    // console.log("Medicine Name:", medicineName);
+    // console.log("Frequency:", frequency);
+    // console.log("Dosage:", dosage);
     setMedicineName("");
     setFrequency("");
     setDosage("");
