@@ -3,8 +3,13 @@ import "./Login.css";
 import bcrypt from "bcryptjs"
 import { FaUser, FaLock } from "react-icons/fa";
 
-
 export default function Login() {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   const phoneNumberRef = useRef();
   const passwordRef = useRef();
@@ -47,30 +52,41 @@ export default function Login() {
 
   return (
     <div className="body">
-        <div className="login">
-      <form className="form" action="">
-        <h1 className="login__header">Login</h1>
-        <div className="login__username-wrapper">
-          <input
-            className="username-text"
-            type="text"
-            placeholder="Username"
-            required
-          />
-          <FaUser className="icon" />
-        </div>
-        <div className="login__password-wrapper">
-          <input
-            className="password-text"
-            type="text"
-            placeholder="Password"
-            required
-          />
-          <FaLock className="icon" />
-        </div>
-        <div className="login__rmm-forgot">
+      <div className="login">
+        <form className="form" action="">
+          <h1 className="login__header">Login</h1>
+          <div className="login__username-wrapper">
+            <input
+              className="username-text"
+              type="text"
+              placeholder="Username"
+              required
+            />
+            <FaUser className="icon" />
+          </div>
+          <div className="login__password-wrapper">
+            <input
+              className="password-text"
+              type={showPassword ? "text" : "password"} // Toggle password visibility
+              placeholder="Password"
+              required
+            />
+            <FaLock className="icon" />
+            <input
+              type="checkbox"
+              id="showPassword"
+              checked={showPassword}
+              onChange={handleTogglePassword}
+            />
+            <label class="showPassword" htmlFor="showPassword">{" "}Show Password</label>
+          </div>
+          <div className="login__forgot">
+            <a href="#" className="login__forgot__link">
+              Forgot password?
+            </a>
+          </div>
           <label>
-            <input type="checkbox" /> Remember me
+            <input className="submit" type="submit" value="Submit" />
           </label>
           <a href="#" className="login__rmm-forgot__link">
             Forgot password?
@@ -88,6 +104,5 @@ export default function Login() {
       </form>
     </div>
     </div>
-    
   );
 }

@@ -68,26 +68,32 @@
     transform: translateY(-50%);
 }
 
-.login__rmm-forgot {
+.login__forgot {
     display: flex;
     justify-content: space-between;
     font-size: 15px;
     margin: -15px 0 15px;
 }
 
-.login__rmm-forgot label input {
+.login__forgot label input {
     accent-color: #fff;
     margin-right: 4px;
 }
 
-.login__rmm-forgot__link {
+.showPassword { 
+    accent-color: #fff;
+
+}
+
+.login__forgot__link {
+    padding-top: 5px;
     color: #000;
     text-decoration: none;
     font-weight: 700;
 }
 
-.login__rmm-forgot__link:hover,
-.login__rmm-forgot__link:focus {
+.login__forgot__link:hover,
+.login__forgot__link:focus {
     text-decoration: underline;
 
 }
