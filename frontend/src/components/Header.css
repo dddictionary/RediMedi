@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body {
+
+} */
+
+.heading {
+    display: flex;
+    justify-content: center;
+}
+
+.heading__header {
+    font-size: 100px;
+}
+
+.heading__plus-icon {
+    fill: red;
+    
+    vertical-align: -0.15em;
+    margin: -1px -5px;
+}
+
+.subtitle {
+    display: flex;
+    justify-content: center;
+}
+
+.subtitle__text {
+    
+    color: red;
+}
