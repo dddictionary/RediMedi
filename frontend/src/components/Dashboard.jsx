@@ -101,7 +101,7 @@ export default function Dashboard() {
             <option value="" className="60days"></option>
             <option value="" className="90days"></option>
           </select>
-          <button type="submit" className="dashboard-submit">
+          <button type="submit" className="dashboard-submit" onClick={handleMedication}>
             Submit
           </button>
         </form>

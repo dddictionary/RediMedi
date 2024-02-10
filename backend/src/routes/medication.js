@@ -6,7 +6,7 @@ const router = express.Router();
 // Use express.json() middleware to parse JSON in the request body
 router.use(express.json());
 
-router.post("/medication", async (req, res) => {
+router.post('/medication', async (req, res) => {
     try {
         console.log(req.body);
         const { name, directions, refills, daySupply } = req.body;
