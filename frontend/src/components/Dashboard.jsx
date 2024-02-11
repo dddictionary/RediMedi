@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./Dashboard.css";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import RediMediLogo from "./RediMediLogo";
-import RefillList from "./RefillList.jsx";
+// import RefillList from "./RefillList.jsx";
 
 export default function Dashboard() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [medicineName, setMedicineName] = useState("");
   const [unit, setUnit] = useState("d"); // Default to days
   const [duration, setDuration] = useState(""); // State variable for frequency duration
@@ -144,7 +144,7 @@ export default function Dashboard() {
         </form>
       </div>
       <div className="list-wrapper">
-        <RefillList />
+        {/* <RefillList /> */}
       </div>
       <div className="dboard-logo-wrapper">
         <RediMediLogo small />

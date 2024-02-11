@@ -1,49 +1,55 @@
-import { React, useRef, useState } from "react";
+import { React, useRef, useState, useEffect } from "react";
 import "./Register.css";
-import bcrypt from "bcryptjs";
+import { useNavigate } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
 import RediMediLogo from "./RediMediLogo";
 
+const isValidPhoneNumber = (phoneNumber) => {
+  // Implement your phone number validation logic here
+  // For example, you can use a regular expression to check the format
+  const phoneRegex = /^\d{10}$/; // Assuming a 10-digit phone number
+  return phoneRegex.test(phoneNumber);
+};
+
+
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
+
+  const [isMounted, setIsMounted] = useState(true); // Track component mounting status
+
+  // useEffect(() => {
+  //   return () => {
+  //     setIsMounted(false); // Set isMounted to false when the component unmounts
+  //   };
+  // }, []);
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const phoneNumberRef = useRef();
-  const passwordRef = useRef();
-
-
-  const handleregister = async () => {
-    const phoneNumber = phoneNumberRef.current.value;
-    const password = passwordRef.current.value;
-    const hashedPassword = bcrypt.hashSync(password, 10);
-    console.log(hashedPassword)
-    try {
-      const data = {
-        phoneNumber,
-        hashedPassword, // Use the hashed password here
-      };
-      
-      const response = await fetch("http://localhost:3000/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-  
-      const result = await response.json();
-      console.log(result);
-      navigate("/home");
-  
-      // Optionally, you can update the state or perform other actions based on the response.
-    } catch (error) {
-      console.error("Error sending registration data:", error);
-    }
+  const handleLogin = () => {
+    navigate("/login");
   };
-  
+
+  const phoneNumberRef = useRef();
+  const navigate = useNavigate();
+
+
+  const handleregister = () => {
+    const phoneNumber = phoneNumberRef.current.value;
+    if (!isValidPhoneNumber(phoneNumber)) {
+      alert("Please enter a valid phone number");
+      return;
+    }
+    const data = {
+      phoneNumber
+    };
+    localStorage.setItem("phoneNumber", JSON.stringify(data));
+    navigate("/home");
+      
+    
+  };
+
   return (
     <div className="body">
       <div className="register">
@@ -64,8 +70,6 @@ export default function Register() {
               className="password-text"
               type={showPassword ? "text" : "password"} // Toggle password visibility
               placeholder="Password"
-              required
-              ref={passwordRef}
             />
             <FaLock className="icon" />
             <input
@@ -89,7 +93,7 @@ export default function Register() {
       <div className="register__login">
         <p className="register__login-text">
           Have an account?{" "}
-          <a href="/login" className="register-link">
+          <a onClick={handleLogin} className="register-link">
             Log in
           </a>
         </p>

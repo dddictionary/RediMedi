@@ -9,7 +9,7 @@ router.use(express.json());
 router.post('/medication', async (req, res) => {
     try {
         console.log(req.body);
-        const { medicineName, frequency, dosage, refills } = req.body;
+        const { medicineName, frequency, dosage} = req.body;
         const medication = new Medication({
             medicineName,
             frequency,
