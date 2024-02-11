@@ -1,18 +1,38 @@
+/* STYLES */
 .mainpage-body {
-  display: flex;
-  flex-direction: column;
-}
-
-.home__sample {
-}
-
-.home__pictures {
-}
-
-.home__sample-reminder {
-  object-fit: cover;
-  width: 25%;
-  height: 25%;
-  outline: solid 2px rgba(0, 0, 0, 0.2);
-
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .home__sample {
+    margin-top: 20px;
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    outline: solid 2px rgba(0, 0, 0, 1);
+    align-items: center;
+  }
+  
+  .home__pictures {
+    flex: 0 0 auto;
+    position: relative; /* To make positioning of description relative to the image */
+  }
+  
+  .home__sample-reminder {
+    object-fit: cover;
+    width: 30%;
+    height: 30%;
+    outline: solid 2px rgba(0, 0, 0, 0.2);
+    animation: rotate-left 0.2s forwards; /* Apply animation */
+  }
+  
+  .sample__description {
+    position: absolute;
+    bottom: 10px; /* Adjust the distance from the bottom */
+    left: 10px; /* Adjust the distance from the left */
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+    padding: 5px 10px; /* Add padding for better readability */
+    border-radius: 5px; /* Rounded corners */
+  }
+  

@@ -45,7 +45,7 @@ const RefillList = () => {
     }, []); // Run the effect only once when the component mounts
 
     return (
-        <div>
+        <div className='list-div'>
             <h2>Refill Events</h2>
             <ul>
                 {refillEvents.map((event, index) => (
