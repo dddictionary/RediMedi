@@ -13,6 +13,10 @@ export default function Dashboard() {
   const [dosage, setDosage] = useState("");
   const [refills, setRefills] = useState("");
 
+  const handleSeeRefills = () => {
+    navigate("/refills");
+  }
+
   const handleMedication = async () => {
     try {
       const data = {
@@ -122,6 +126,9 @@ export default function Dashboard() {
       <div className="list-wrapper">
         <RefillList />
       </div>
+      <button className="see-refills-button" onClick={handleSeeRefills}>
+          See Refills
+        </button>
       <div className="dboard-logo-wrapper">
         <RediMediLogo small />
       </div>
