@@ -38,7 +38,8 @@
   margin-right: 10px; 
 }
 
-.about__button:hover {
+.about__button:hover,
+.about__button:focus {
   background-color: rgb(172, 0, 0); 
 }
 

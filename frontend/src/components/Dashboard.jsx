@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Dashboard.css";
 // import { useNavigate } from "react-router-dom";
 import RediMediLogo from "./RediMediLogo";
-// import RefillList from "./RefillList.jsx";
+import RefillList from "./RefillList.jsx";
 
 export default function Dashboard() {
   // const navigate = useNavigate();
@@ -144,7 +144,7 @@ export default function Dashboard() {
         </form>
       </div>
       <div className="list-wrapper">
-        {/* <RefillList /> */}
+        <RefillList />
       </div>
       <div className="dboard-logo-wrapper">
         <RediMediLogo small />
