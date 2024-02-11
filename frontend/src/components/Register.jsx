@@ -15,41 +15,35 @@ export default function Register() {
   const passwordRef = useRef();
 
 
-
-
   const handleregister = async () => {
     const phoneNumber = phoneNumberRef.current.value;
     const password = passwordRef.current.value;
     const hashedPassword = bcrypt.hashSync(password, 10);
-
-
+    console.log(hashedPassword)
     try {
       const data = {
         phoneNumber,
-        hashedPassword,
+        hashedPassword, // Use the hashed password here
       };
-
-      const response = await fetch("http://localhost:3000/register", { // FIX THIS LINK -- I JUST CHANGED LOCALHOST3000/LOGIN TO REGISTER INSTEAD
+      
+      const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
-
+  
       const result = await response.json();
       console.log(result);
       navigate("/home");
-
+  
       // Optionally, you can update the state or perform other actions based on the response.
     } catch (error) {
-      console.error("Error sending medication data:", error);
+      console.error("Error sending registration data:", error);
     }
   };
-
-
-
-
+  
   return (
     <div className="body">
       <div className="register">
@@ -61,6 +55,7 @@ export default function Register() {
               type="text"
               placeholder="Phone number"
               required
+              ref={phoneNumberRef}
             />
             <FaUser className="icon" />
           </div>
@@ -70,6 +65,7 @@ export default function Register() {
               type={showPassword ? "text" : "password"} // Toggle password visibility
               placeholder="Password"
               required
+              ref={passwordRef}
             />
             <FaLock className="icon" />
             <input
@@ -78,12 +74,7 @@ export default function Register() {
               checked={showPassword}
               onChange={handleTogglePassword}
             />
-            <label class="showPassword" htmlFor="showPassword">{" "}Show Password</label>
-          </div>
-          <div className="register__forgot">
-            <a href="#" className="register__forgot__link">
-              Forgot password?
-            </a>
+            <label className="showPassword" htmlFor="showPassword">{" "}Show Password</label>
           </div>
           <label>
             <input className="submit" type="submit" value="Submit" onClick={handleregister}/>

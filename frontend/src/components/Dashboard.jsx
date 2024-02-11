@@ -113,7 +113,7 @@ export default function Dashboard() {
               </option>
             </select>
           </div>
-          <button type="submit" className="dashboard-submit">
+          <button type="submit" className="dashboard-submit" onClick={handleMedication}>
             Submit
           </button>
         </form>

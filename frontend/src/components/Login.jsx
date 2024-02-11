@@ -1,11 +1,12 @@
 import { React, useRef, useState } from "react";
 import "./Login.css";
 import bcrypt from "bcryptjs";
+import { useNavigate } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-
+  const navigate = useNavigate();
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -14,48 +15,43 @@ export default function Login() {
   const phoneNumberRef = useRef();
   const passwordRef = useRef();
 
-  const handleRegistration = () => {
-    console.log("Register");
+  const handleRegister = () => {
+    navigate("/register");
   };
-
 
   const handleLogin = async () => {
     const salt = bcrypt.genSaltSync(10);
     const phoneNumber = phoneNumberRef.current.value;
     const password = bcrypt.hashSync(passwordRef.current.value, salt);
     try {
-        const data = {
-            phoneNumber,
-            password,
-        };
+      const data = {
+        phoneNumber,
+        password,
+      };
 
-        const response = await fetch("http://localhost:3000/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        });
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-        const result = await response.json();
-        console.log(result);
+      const result = await response.json();
+      console.log(result);
 
-        if (response.status === 200) {
-            // Successful login, redirect to "/home"
-            navigate("/home");
-        } else {
-            // Display an error message to encourage registration
-            alert(result.message);
-            navigate("/register");
-        }
+      if (response.status === 200) {
+        // Successful login, redirect to "/home"
+        navigate("/home");
+      } else {
+        // Display an error message to encourage registration
+        alert(result.message);
+        navigate("/register");
+      }
     } catch (error) {
-        console.error("Error sending login data:", error);
+      console.error("Error sending login data:", error);
     }
-};
-
-
-
-
+  };
 
   return (
     <div className="body">
@@ -68,16 +64,20 @@ export default function Login() {
               type="text"
               placeholder="Phone number"
               required
+              ref={phoneNumberRef} // Add this line
             />
+
             <FaUser className="icon" />
           </div>
           <div className="login__password-wrapper">
             <input
               className="password-text"
-              type={showPassword ? "text" : "password"} // Toggle password visibility
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               required
+              ref={passwordRef} // Add this line
             />
+
             <FaLock className="icon" />
             <input
               type="checkbox"
@@ -93,18 +93,18 @@ export default function Login() {
             </a>
           </div>
           <label>
-            <input className="submit" type="submit" value="Submit" onClick={handleLogin}/>
+            <input className="submit" type="submit" value="Submit" onClick={handleLogin} />
           </label>
         </form>
-        </div>
-        <div className="login__register">
-          <p className="register-text">
-            Don't have an account?{" "}
-            <a onClick={handleRegistration} className="register-link">
-              Register here
-            </a>
-          </p>
-        </div>
       </div>
+      <div className="login__register">
+        <p className="register-text">
+          Don't have an account?{" "}
+          <a onClick={handleRegister} className="register-link">
+            Register here
+          </a>
+        </p>
+      </div>
+    </div>
   );
 }
