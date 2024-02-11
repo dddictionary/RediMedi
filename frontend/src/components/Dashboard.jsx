@@ -9,12 +9,14 @@ export default function Dashboard() {
   const [medicineName, setMedicineName] = useState("");
   const [unit, setUnit] = useState("d"); // Default to days
   const [duration, setDuration] = useState(""); // State variable for frequency duration
+  const [dosage, setDosage] = useState("");
 
   const handleMedication = async () => {
     try {
       const data = {
         medicineName,
         frequency: `${duration}${unit}`, // Combine unit and duration for frequency
+        dosage,
       };
 
       const response = await fetch("http://localhost:3000/medication", {
@@ -27,7 +29,7 @@ export default function Dashboard() {
 
       const result = await response.json();
       console.log(result);
-      navigate("/home");
+      //navigate("/home");
     } catch (error) {
       console.error("Error sending medication data:", error);
     }
@@ -38,6 +40,7 @@ export default function Dashboard() {
     setMedicineName("");
     setUnit("d"); // Reset unit to days
     setDuration("");
+    setDosage("");
   };
 
   return (
@@ -126,6 +129,8 @@ export default function Dashboard() {
               type="text"
               id="dosage"
               placeholder="Dosage"
+              value={dosage}
+              onChange={(event) => setDosage(event.target.value)}
               required
             />
           </div>
