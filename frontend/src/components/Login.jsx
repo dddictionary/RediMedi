@@ -88,9 +88,6 @@ export default function Login() {
           <label>
             <input className="submit" type="submit" value="Submit" onClick={handleLogin}/>
           </label>
-          <a href="#" className="login__rmm-forgot__link">
-            Forgot password?
-          </a>
         </form>
         </div>
         <div className="login__register">
