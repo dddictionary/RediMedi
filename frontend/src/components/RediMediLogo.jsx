@@ -6,8 +6,8 @@ import "./RediMediLogo.css";
 
 export default function RediMediLogo({ small }) {
     const logoClass = classNames("heading__header", {
-      "heading__header--small": small, // Add this class when small prop is true
-    });
+      "heading__header--small": small, 
+    }); // Add this class when small prop is true
   
     return (
       <div className="heading">

@@ -6,6 +6,7 @@
 .heading {
   display: flex;
   justify-content: center;
+  margin-left: 15px;
 }
 
 .heading__header {
@@ -13,12 +14,12 @@
 }
 
 .heading__header--small {
-    font-size: 40px; /* Adjust font-size for small logo */
+    font-size: 40px; /* Adjust font-size for small logo. Only possible because of the classnames package. */
   }
 
 .heading__plus-icon {
   fill: rgb(213, 0, 0);
   vertical-align: -0.15em;
-  margin: -1px -5px;
+  margin: 0 -2px;
 }
 
