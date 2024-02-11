@@ -3,6 +3,8 @@ import "./Login.css";
 import bcrypt from "bcryptjs";
 import { useNavigate } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
+import RediMediLogo from "./RediMediLogo";
+
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -96,15 +98,18 @@ export default function Login() {
             <input className="submit" type="submit" value="Submit" onClick={handleLogin} />
           </label>
         </form>
+        </div>
+        <div className="login__register">
+          <p className="register-text">
+            Don't have an account?{" "}
+            <a onClick={handleRegistration} className="register-link">
+              Register here
+            </a>
+          </p>
+        </div>
+      <div className="dboard-logo-wrapper">
+        <RediMediLogo small />
       </div>
-      <div className="login__register">
-        <p className="register-text">
-          Don't have an account?{" "}
-          <a onClick={handleRegister} className="register-link">
-            Register here
-          </a>
-        </p>
       </div>
-    </div>
   );
 }

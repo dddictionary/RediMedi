@@ -2,6 +2,7 @@ import { React, useRef, useState } from "react";
 import "./Register.css";
 import bcrypt from "bcryptjs";
 import { FaUser, FaLock } from "react-icons/fa";
+import RediMediLogo from "./RediMediLogo";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,7 +10,6 @@ export default function Register() {
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-
 
   const phoneNumberRef = useRef();
   const passwordRef = useRef();
@@ -77,18 +77,26 @@ export default function Register() {
             <label className="showPassword" htmlFor="showPassword">{" "}Show Password</label>
           </div>
           <label>
-            <input className="submit" type="submit" value="Submit" onClick={handleregister}/>
+            <input
+              className="submit"
+              type="submit"
+              value="Submit"
+              onClick={handleregister}
+            />
           </label>
         </form>
-        </div>
-        <div className="register__register">
-          <p className="register-text">
-            Have an account?{" "}
-            <a href="/login" className="register-link">
-                Log in
-            </a>
-          </p>
-        </div>
       </div>
+      <div className="register__login">
+        <p className="register__login-text">
+          Have an account?{" "}
+          <a href="/login" className="register-link">
+            Log in
+          </a>
+        </p>
+      </div>
+      <div className="dboard-logo-wrapper">
+        <RediMediLogo small />
+      </div>
+    </div>
   );
 }
