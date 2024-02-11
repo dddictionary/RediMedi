@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import medication from "./src/routes/medication.js"
 import login from "./src/routes/login.js"
 import register from "./src/routes/register.js"
+import refill from "./src/routes/refills.js"
 const app = express();
 const port = 3000;
 
@@ -11,6 +12,7 @@ app.use(cors());
 app.use("/", medication);
 app.use("/", login);
 app.use("/", register);
+app.use("/", refill);
 
 
 // Define routes and middleware here
