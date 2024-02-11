@@ -17,7 +17,7 @@ export default function Login() {
   const phoneNumberRef = useRef();
   const passwordRef = useRef();
 
-  const handleRegister = () => {
+  const handleRegistration = () => {
     navigate("/register");
   };
 
