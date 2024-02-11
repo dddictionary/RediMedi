@@ -107,16 +107,17 @@
     
 }
 
-.register-link {
+.go-register-link {
     text-decoration: none;
     color: #000;
     font-weight: 700;
     transition: all 0.3s ease;
 }
 
-.register-link:hover,
-.register-link:focus {
+.go-register-link:hover,
+.go-register-link:focus {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .submit {
@@ -138,11 +139,5 @@
     background-color: #f0f0f0; 
     border-color: #999; 
     cursor: pointer; 
-}
-
-.fb-login-button {
-    width: 100%;
-    border-radius: 50px;
-
 }
 

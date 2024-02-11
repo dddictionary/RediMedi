@@ -102,7 +102,7 @@ export default function Login() {
         <div className="login__register">
           <p className="register-text">
             Don't have an account?{" "}
-            <a onClick={handleRegistration} className="register-link">
+            <a onClick={handleRegistration} className="go-register-link">
               Register here
             </a>
           </p>
