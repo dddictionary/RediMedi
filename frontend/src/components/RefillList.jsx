@@ -20,11 +20,11 @@ const RefillList = () => {
                 // Calculate refill events for each medication
                 const events = [];
                 medications.forEach(medication => {
-                    const { medicineName, frequency, dosage, refills } = medication;
+                    const { medicineName, frequency, dosage} = medication;
                     // Add logic here to calculate refill events based on medication data
                     // Push calculated events to the events array
                     const refillDate = new Date();
-                    refillDate.setDate(refillDate.getDate() + parseInt(refills)); // Assuming refills are in days
+                    refillDate.setDate(refillDate.getDate() + parseInt(frequency)); // Assuming refills are in days
                     events.push({
                         medicineName,
                         refillDate: refillDate.toLocaleDateString('en-US'), // Format refill date as a string
