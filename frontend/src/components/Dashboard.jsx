@@ -3,6 +3,7 @@ import "./Dashboard.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RediMediLogo from "./RediMediLogo";
+import RefillList from "./RefillList.jsx";
 
 export default function Dashboard() {
   // State variables to hold the input values
@@ -117,6 +118,9 @@ export default function Dashboard() {
             Submit
           </button>
         </form>
+      </div>
+      <div className="list-wrapper">
+        <RefillList />
       </div>
       <div className="dboard-logo-wrapper">
         <RediMediLogo small />
