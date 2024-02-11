@@ -11,7 +11,7 @@ router.use(express.json());
 router.get('/refills', async (req, res) => {
     try {
         // Fetch medication data from the MongoDB collection
-        const medications = await Medication.find({}, 'medicineName frequency refills');
+        const medications = await Medication.find({}, 'medicineName frequency dosage refills');
         
         // Send the filtered medication data back to the frontend
         res.status(200).json(medications);
