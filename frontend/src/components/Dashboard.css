@@ -87,9 +87,8 @@
 .radio-inputs label {
   margin-right: 15px;
 }
-
-.dropdown {
-  all: unset;
+#duration {
+  /* Remove 'all: unset;' to preserve default dropdown styling */
   width: 50%;
   height: 36.5px;
   background-color: #fff;
@@ -101,9 +100,22 @@
   transition: all 0.3s ease;
 }
 
-.dropdown:hover {
+#duration:hover {
   font-weight: bold;
   background-color: #f0f0f0;
   border-color: #999;
   cursor: pointer;
+}
+
+.arrow-down {
+  /* Styling for the down arrow */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #000; /* Change the color as needed */
 }
