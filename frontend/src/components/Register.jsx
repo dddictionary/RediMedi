@@ -1,9 +1,9 @@
 import { React, useRef, useState } from "react";
-import "./Login.css";
+import "./Register.css";
 import bcrypt from "bcryptjs";
 import { FaUser, FaLock } from "react-icons/fa";
 
-export default function Login() {
+export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePassword = () => {
@@ -17,7 +17,7 @@ export default function Login() {
 
 
 
-  const handleLogin = async () => {
+  const handleregister = async () => {
     const phoneNumber = phoneNumberRef.current.value;
     const password = passwordRef.current.value;
     const hashedPassword = bcrypt.hashSync(password, 10);
@@ -29,7 +29,7 @@ export default function Login() {
         hashedPassword,
       };
 
-      const response = await fetch("http://localhost:3000/login", {
+      const response = await fetch("http://localhost:3000/register", { // FIX THIS LINK -- I JUST CHANGED LOCALHOST3000/LOGIN TO REGISTER INSTEAD
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,10 +52,10 @@ export default function Login() {
 
   return (
     <div className="body">
-      <div className="login">
+      <div className="register">
         <form className="form" action="">
-          <h1 className="login__header">Login</h1>
-          <div className="login__phone-wrapper">
+          <h1 className="register__header">Register</h1>
+          <div className="register__phone-wrapper">
             <input
               className="phone-text"
               type="text"
@@ -64,7 +64,7 @@ export default function Login() {
             />
             <FaUser className="icon" />
           </div>
-          <div className="login__password-wrapper">
+          <div className="register__password-wrapper">
             <input
               className="password-text"
               type={showPassword ? "text" : "password"} // Toggle password visibility
@@ -80,21 +80,21 @@ export default function Login() {
             />
             <label class="showPassword" htmlFor="showPassword">{" "}Show Password</label>
           </div>
-          <div className="login__forgot">
-            <a href="#" className="login__forgot__link">
+          <div className="register__forgot">
+            <a href="#" className="register__forgot__link">
               Forgot password?
             </a>
           </div>
           <label>
-            <input className="submit" type="submit" value="Submit" onClick={handleLogin}/>
+            <input className="submit" type="submit" value="Submit" onClick={handleregister}/>
           </label>
         </form>
         </div>
-        <div className="login__register">
+        <div className="register__register">
           <p className="register-text">
-            Don't have an account?{" "}
-            <a href="/register" className="register-link">
-              Register here
+            Have an account?{" "}
+            <a href="/login" className="register-link">
+                Log in
             </a>
           </p>
         </div>

@@ -4,6 +4,7 @@ import './App.css';
 import Login from './components/Login.jsx';
 import Home from './components/Home.jsx';
 import Dashboard from "./components/Dashboard.jsx";
+import Register from './components/Register.jsx';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path="/register" element={<Register />} /> 
         <Route path="/home" element={<Home />} />
         <Route path="/" element={< Home />} />
       </Routes>
