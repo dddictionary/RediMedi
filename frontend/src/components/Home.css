@@ -1,4 +1,18 @@
 .mainpage-body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+.home__sample {
+}
+
+.home__pictures {
+}
+
+.home__sample-reminder {
+  object-fit: cover;
+  width: 25%;
+  height: 25%;
+  outline: solid 2px rgba(0, 0, 0, 0.2);
+
 }
