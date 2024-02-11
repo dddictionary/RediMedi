@@ -3,12 +3,15 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import './App.css';
 import Login from './components/Login.jsx';
 import Home from './components/Home.jsx';
+import Dashboard from "./components/Dashboard.jsx";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/" element={< Home />} />
       </Routes>
       {/* <Navigate to="/login" /> */}
