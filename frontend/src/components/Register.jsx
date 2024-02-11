@@ -2,6 +2,7 @@ import { React, useRef, useState } from "react";
 import "./Register.css";
 import bcrypt from "bcryptjs";
 import { FaUser, FaLock } from "react-icons/fa";
+import RediMediLogo from "./RediMediLogo";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,18 +11,13 @@ export default function Register() {
     setShowPassword(!showPassword);
   };
 
-
   const phoneNumberRef = useRef();
   const passwordRef = useRef();
-
-
-
 
   const handleregister = async () => {
     const phoneNumber = phoneNumberRef.current.value;
     const password = passwordRef.current.value;
     const hashedPassword = bcrypt.hashSync(password, 10);
-
 
     try {
       const data = {
@@ -29,7 +25,8 @@ export default function Register() {
         hashedPassword,
       };
 
-      const response = await fetch("http://localhost:3000/register", { // FIX THIS LINK -- I JUST CHANGED LOCALHOST3000/LOGIN TO REGISTER INSTEAD
+      const response = await fetch("http://localhost:3000/register", {
+        // FIX THIS LINK -- I JUST CHANGED LOCALHOST3000/LOGIN TO REGISTER INSTEAD
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,9 +43,6 @@ export default function Register() {
       console.error("Error sending medication data:", error);
     }
   };
-
-
-
 
   return (
     <div className="body">
@@ -78,7 +72,10 @@ export default function Register() {
               checked={showPassword}
               onChange={handleTogglePassword}
             />
-            <label class="showPassword" htmlFor="showPassword">{" "}Show Password</label>
+            <label class="showPassword" htmlFor="showPassword">
+              {" "}
+              Show Password
+            </label>
           </div>
           <div className="register__forgot">
             <a href="#" className="register__forgot__link">
@@ -86,18 +83,26 @@ export default function Register() {
             </a>
           </div>
           <label>
-            <input className="submit" type="submit" value="Submit" onClick={handleregister}/>
+            <input
+              className="submit"
+              type="submit"
+              value="Submit"
+              onClick={handleregister}
+            />
           </label>
         </form>
-        </div>
-        <div className="register__register">
-          <p className="register-text">
-            Have an account?{" "}
-            <a href="/login" className="register-link">
-                Log in
-            </a>
-          </p>
-        </div>
       </div>
+      <div className="register__login">
+        <p className="register__login-text">
+          Have an account?{" "}
+          <a href="/login" className="register-link">
+            Log in
+          </a>
+        </p>
+      </div>
+      <div className="dboard-logo-wrapper">
+        <RediMediLogo small />
+      </div>
+    </div>
   );
 }

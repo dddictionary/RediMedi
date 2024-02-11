@@ -2,6 +2,8 @@ import { React, useRef, useState } from "react";
 import "./Login.css";
 import bcrypt from "bcryptjs";
 import { FaUser, FaLock } from "react-icons/fa";
+import RediMediLogo from "./RediMediLogo";
+
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -98,6 +100,9 @@ export default function Login() {
             </a>
           </p>
         </div>
+      <div className="dboard-logo-wrapper">
+        <RediMediLogo small />
+      </div>
       </div>
   );
 }
