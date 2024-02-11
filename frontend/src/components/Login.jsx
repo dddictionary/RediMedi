@@ -1,6 +1,6 @@
 import { React, useRef, useState } from "react";
 import "./Login.css";
-import bcrypt from "bcryptjs"
+import bcrypt from "bcryptjs";
 import { FaUser, FaLock } from "react-icons/fa";
 
 export default function Login() {
@@ -86,14 +86,13 @@ export default function Login() {
             </a>
           </div>
           <label>
-            <input className="submit" type="submit" value="Submit" />
+            <input className="submit" type="submit" value="Submit" onClick={handleLogin}/>
           </label>
           <a href="#" className="login__rmm-forgot__link">
             Forgot password?
           </a>
         </form>
         </div>
-        <button className="submit" onClick={handleLogin}>Login</button>
         <div className="login__register">
           <p className="register-text">
             Don't have an account?{" "}
