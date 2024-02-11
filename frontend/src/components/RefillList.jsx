@@ -8,7 +8,13 @@ const RefillList = () => {
         const calculateRefillEvents = async () => {
             // Fetch medication data from backend
             try {
-                const response = await fetch('/medication');
+                const response = await fetch('http://localhost:3000/refills',
+                    {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
                 const medications = await response.json();
 
                 // Calculate refill events for each medication
