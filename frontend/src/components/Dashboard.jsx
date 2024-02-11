@@ -1,29 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Dashboard.css";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RediMediLogo from "./RediMediLogo";
 import RefillList from "./RefillList.jsx";
 
 export default function Dashboard() {
-  // State variables to hold the input values
   const navigate = useNavigate();
   const [medicineName, setMedicineName] = useState("");
-  const [frequency, setFrequency] = useState("");
-  const [dosage, setDosage] = useState("");
-  const [refills, setRefills] = useState("");
-
-  const handleSeeRefills = () => {
-    navigate("/refills");
-  }
+  const [unit, setUnit] = useState("d"); // Default to days
+  const [duration, setDuration] = useState(""); // State variable for frequency duration
 
   const handleMedication = async () => {
     try {
       const data = {
         medicineName,
-        frequency,
-        dosage,
-        refills,
+        frequency: `${duration}${unit}`, // Combine unit and duration for frequency
       };
 
       const response = await fetch("http://localhost:3000/medication", {
@@ -37,22 +28,16 @@ export default function Dashboard() {
       const result = await response.json();
       console.log(result);
       navigate("/home");
-
-      // Optionally, you can update the state or perform other actions based on the response.
     } catch (error) {
       console.error("Error sending medication data:", error);
     }
   };
 
-  // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log("Medicine Name:", medicineName);
-    // console.log("Frequency:", frequency);
-    // console.log("Dosage:", dosage);
     setMedicineName("");
-    setFrequency("");
-    setDosage("");
+    setUnit("d"); // Reset unit to days
+    setDuration("");
   };
 
   return (
@@ -73,34 +58,89 @@ export default function Dashboard() {
           </div>
           <div className="form-group">
             <label htmlFor="frequency">Frequency:</label>
-            <input
-              type="text"
-              id="frequency"
-              value={frequency}
-              onChange={(event) => setFrequency(event.target.value)}
-              placeholder="Frequency"
-              required
-            />
+            <div className="frequency-inputs">
+              <div className="radio-inputs">
+                <input
+                  type="radio"
+                  id="seconds"
+                  name="unit"
+                  value="s"
+                  checked={unit === "s"}
+                  onChange={() => setUnit("s")}
+                />
+                <label htmlFor="seconds">Seconds</label>
+                <input
+                  type="radio"
+                  id="hours"
+                  name="unit"
+                  value="h"
+                  checked={unit === "h"}
+                  onChange={() => setUnit("h")}
+                />
+                <label htmlFor="hours">Hours</label>
+                <input
+                  type="radio"
+                  id="days"
+                  name="unit"
+                  value="d"
+                  checked={unit === "d"} // Default to days
+                  onChange={() => setUnit("d")}
+                />
+                <label htmlFor="days">Days</label>
+              </div>
+              <select
+                name="duration"
+                id="duration"
+                value={duration}
+                onChange={(event) => setDuration(event.target.value)}
+                className="dropdown"
+              >
+                {unit === "s" && (
+                  <>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="60">60</option>
+                  </>
+                )}
+                {unit === "h" && (
+                  <>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="12">12</option>
+                  </>
+                )}
+                {unit === "d" && (
+                  <>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="7">7</option>
+                  </>
+                )}
+              </select>
+            </div>
           </div>
           <div className="form-group">
             <label htmlFor="dosage">Dosage:</label>
             <input
               type="text"
               id="dosage"
-              value={dosage}
-              onChange={(event) => setDosage(event.target.value)}
               placeholder="Dosage"
               required
             />
           </div>
-          <button type="submit" className="dashboard-submit" onClick={handleMedication}>
+          <button
+            type="submit"
+            className="dashboard-submit"
+            onClick={handleMedication}
+          >
             Submit
           </button>
         </form>
       </div>
-      {/* <div className="list-wrapper">
+      <div className="list-wrapper">
         <RefillList />
-      </div> */}
+      </div>
       <div className="dboard-logo-wrapper">
         <RediMediLogo small />
       </div>

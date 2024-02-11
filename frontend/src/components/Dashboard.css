@@ -70,20 +70,38 @@
   right: 0;
 }
 
-#refill-cycle {
+
+.frequency-inputs {
+  display: flex;
+  align-items: center;
+}
+
+.radio-inputs {
+  display: flex;
+}
+
+.radio-inputs input[type="radio"] {
+  margin-right: 10px;
+}
+
+.radio-inputs label {
+  margin-right: 15px;
+}
+
+.dropdown {
   all: unset;
   width: 50%;
   height: 36.5px;
   background-color: #fff;
   text-align: center;
-  line-height: 36.5px; /* Vertically center the text */
-  font-size: 16px; /* Adjust the font size as needed */
-  border: 1px solid #ccc; /* Add a border for consistency */
-  border-radius: 4px; /* Add some border radius for rounded corners */
-  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  line-height: 36.5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
-#refill-cycle:hover {
+.dropdown:hover {
   font-weight: bold;
   background-color: #f0f0f0;
   border-color: #999;
