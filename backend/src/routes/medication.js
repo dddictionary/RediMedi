@@ -14,7 +14,6 @@ router.post('/medication', async (req, res) => {
             medicineName,
             frequency,
             dosage,
-            refills,
         });
         await medication.save();
         res.status(201).json({ message: 'Medication Saved Successfully' });

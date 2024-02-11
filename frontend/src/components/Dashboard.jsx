@@ -93,42 +93,14 @@ export default function Dashboard() {
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="refills">Refills:</label>
-            <input
-              type="text"
-              id="refills"
-              value={refills}
-              onChange={(event) => setRefills(event.target.value)}
-              placeholder="Number of refills"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="">Refill cycle:</label>
-            <select name="refill-cycle" id="refill-cycle" className="dropdown">
-              <option value="30" className="30days">
-                30 days
-              </option>
-              <option value="60" className="60days">
-                60 days
-              </option>
-              <option value="90" className="90days">
-                90 days
-              </option>
-            </select>
-          </div>
           <button type="submit" className="dashboard-submit" onClick={handleMedication}>
             Submit
           </button>
         </form>
       </div>
-      <div className="list-wrapper">
+      {/* <div className="list-wrapper">
         <RefillList />
-      </div>
-      <button className="see-refills-button" onClick={handleSeeRefills}>
-          See Refills
-        </button>
+      </div> */}
       <div className="dboard-logo-wrapper">
         <RediMediLogo small />
       </div>
